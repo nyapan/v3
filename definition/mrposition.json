@@ -1,0 +1,299 @@
+{
+  "title": "",
+  "data": "none",
+  "data_path": "none",
+  "css_path": "../../css/mrposition.css",
+  "default_text_on": false,
+  "part": [
+      {
+        "note": "title",
+        "id": "part_001",
+        "class": "position-absolute text text-center p-1 ",
+        "style": "width:100px;height:30px;color:#eeeeff;",
+        "conditional": "",
+        "parent": "#gadjet_template_001",
+        "text_on": true,
+        "text": "座標さん"
+    },{
+      "note": "title",
+      "id": "part_001_1",
+      "class": "position-absolute text text-center p-1 ",
+      "style": "width:400px;height:30px;left:890px;color:eeeeff;",
+      "conditional": "",
+      "parent": "#gadjet_template_001",
+      "text_on": true,
+      "text": "Mr.Position based v3.js 2020 NYAPAN PROJECT "
+    },{
+        "note": "画像取り込み",
+        "tag": "input",
+        "type":"file",
+        "id": "get_img",
+        "class": "position-absolute border border-dark text text-center ",
+        "style": "width:10px;height:10px;top:5px;left:500px;visibility:hidden;",
+        "accept": "image/*",
+        "conditional": "",
+        "parent": "#gadjet_template_002",
+        "onchange": "v3.file_reader(this.files[0], '#part_004');",
+        "text": "画像取得"
+    },{
+      "note": "画像",
+      "id": "select_img_button",
+      "class": "position-absolute p-1 test text-center ",
+      "style": "width:100px;height:32px;top:5px;left:5px;border:1px solid #cccccc;cursor:pointer;",
+      "conditional": "",
+      "parent": "#gadjet_template_002",
+      "text_on": true,
+      "text": "画像選択",
+      "onclick": "v3.fire_click('get_img');",
+      "onmousedown": "v3.change_style('#select_img_button', 'background', '#eeeeee');v3.fire_click('get_img');",
+      "onmouseup": "v3.change_style('#select_img_button', 'background', '#ffffff');",
+      "onmouseover": "v3.change_style('#select_img_button', 'border', '1px solid #222222');",
+      "onmouseout": "v3.change_style('#select_img_button', 'border', '1px solid #cccccc');v3.change_style('#select_img_button', 'background', '#ffffff');"
+    },{
+      "note": "CSV取り込み",
+      "tag": "input",
+      "type":"file",
+      "id": "get_csv",
+      "class": "position-absolute border border-dark text text-center ",
+      "style": "width:10px;height:10px;top:5px;left:500px;visibility:hidden;",
+      "accept": ".csv",
+      "conditional": "",
+      "parent": "#gadjet_template_002",
+      "onchange": "v3.file_reader(this.files[0], '#part_004');",
+      "text": "画像取得"
+  },{
+      "note": "CSV",
+      "id": "select_csv_button",
+      "class": "position-absolute p-1 text text-center ",
+      "style": "width:100px;height:32px;top:5px;left:110px;border:1px solid #cccccc;cursor:pointer;",
+      "conditional": "",
+      "parent": "#gadjet_template_002",
+      "text_on": true,
+      "text": "CSV選択",
+      "onmousedown": "v3.change_style('#select_csv_button', 'background', '#eeeeee');v3.fire_click('get_csv');",
+      "onmouseup": "v3.change_style('#select_csv_button', 'background', '#ffffff');",
+      "onmouseover": "v3.change_style('#select_csv_button', 'border', '1px solid #222222');",
+      "onmouseout": "v3.change_style('#select_csv_button', 'border', '1px solid #cccccc');v3.change_style('#select_csv_button', 'background', '#ffffff');"
+    },{
+        "note": "画像表示",
+        "tag": "img",
+        "src": "../../img/default.png",
+        "id": "part_004",
+        "class": "position-absolute ",
+        "style": "top:43px;left:3px;border:1px solid #222222;",
+        "conditional": "",
+        "parent": "#gadjet_template_002",
+        "text": "part",
+        "ondragover": "v3.dragover(this);",
+        "ondragleave": "v3.dragleave(this);"
+    },{
+      "note": "取り込み画像サイズ",
+      "id": "part_004_size",
+      "class": "position-absolute p-1 ",
+      "style": "width:300px;height:32px;top:5px;left:710px;",
+      "conditional": "",
+      "parent": "#gadjet_template_002",
+      "text_on": true,
+      "text": "画像サイズ：横1000px-縦562px"
+    },{
+      "note": "MAX画像サイズ",
+      "id": "max_img_size",
+      "class": "position-absolute p-1 ",
+      "style": "width:380px;height:32px;top:610px;left:720px;",
+      "conditional": "",
+      "parent": "#gadjet_template_002",
+      "text_on": true,
+      "text": "最大画像サイズ : 横1000px-縦562px"
+    },{
+      "note": "title",
+      "id": "point_list",
+      "class": "position-absolute text text-center border border-dark ",
+      "style": "width:250px;height:24px;top:-26px;left:-1px;background-color:#ffffff;",
+      "conditional": "",
+      "parent": "#gadjet_template_003",
+      "text_on": true,
+      "text": "座標"
+    },{
+      "note": "追加",
+      "id": "point_plus_button",
+      "class": "line-height19px ",
+      "style": "position:absolute;width:20px;height:20px;top:1px;left:205px;background-color:#334477;color:#eeeeff;cursor:pointer;padding:-10px;",
+      "conditional": "",
+      "parent": "#point_list",
+      "text_on": true,
+      "text": "＋",
+      "onclick": "var point_index = (+d3.select('#point_index').text()) + 1;d3.select('#point_index').text(point_index);v3.copySelection(d3.select('#point'), d3.select('#gadjet_template_003'), point_index);d3.select('#point_'+point_index).style('top', 4+(point_index*28)-28+'px');d3.select('#point_'+point_index).select('#point_' + point_index + '_name').text('point_'+point_index);return false;"
+    },{
+      "note": "追加index",
+      "id": "point_index",
+      "class": "position-absolute line-height19px ",
+      "style": "width:20px;height:20px;top:1px;left:227px;background-color:#334477;color:#eeeeff;cursor:pointer;",
+      "conditional": "",
+      "parent": "#point_list",
+      "text_on": true,
+      "text": "0"
+    },{
+      "note": "point",
+      "id": "point",
+      "class": "position-absolute ",
+      "style": "width:238px;height:23px;top:-35px;left:5px;background-color:#6688ee;vertical-align:middle;visibility:hidden;",
+      "conditional": "",
+      "parent": "#gadjet_template_003",
+      "text_on": true,
+      "text": ""
+    },{
+      "note": "point_category",
+      "id": "point_[idx]_category",
+      "class": "position-absolute line-height13px text text-center ",
+      "style": "width:25px;height:21px;top:1px;left:5px;z-index:80;color:#ff2222;font-size:20pt;font-weight:900;visibility:hidden;",
+      "conditional": "",
+      "parent": "#point",
+      "text_on": true,
+      "text": "+"
+    },{
+      "note": "point_sa_id",
+      "id": "point_[idx]_sa_id",
+      "class": "position-absolute line-height13px text text-center ",
+      "style": "width:21px;height:21px;top:1px;left:216px;z-index:80;color:#ff2222;font-size:20pt;font-weight:900;visibility:hidden;",
+      "conditional": "",
+      "parent": "#point",
+      "text_on": true,
+      "text": "+"
+    },{
+      "note": "point_sy_id",
+      "id": "point_[idx]_sy_id",
+      "class": "position-absolute line-height13px ",
+      "style": "width:111px;height:21px;top:1px;left:2px;background-color:#eaffff;vertical-align:middle;",
+      "conditional": "",
+      "parent": "#point",
+      "text_on": true,
+      "text": "point"
+    },{
+      "note": "point_name",
+      "id": "point_[idx]_name",
+      "class": "position-absolute line-height13px ",
+      "style": "width:111px;height:21px;top:1px;left:2px;background-color:#eaffff;vertical-align:middle;",
+      "conditional": "",
+      "parent": "#point",
+      "text_on": true,
+      "text": "point"
+    },{
+      "note": "pointer_coordinate_x",
+      "id": "pointer_[idx]_coordinate_x",
+      "class": "position-absolute text text-center line-height19px ",
+      "style": "width:50px;height:21px;top:1px;left:114px;background-color:#eaffff;vertical-align:middle;",
+      "conditional": "",
+      "parent": "#point",
+      "text_on": true,
+      "text": "x"
+    },{
+      "note": "pointer_coordinate_y",
+      "id": "pointer_[idx]_coordinate_y",
+      "class": "position-absolute text text-center line-height19px ",
+      "style": "width:50px;height:21px;top:1px;left:165px;background-color:#eaffff;vertical-align:middle;",
+      "conditional": "",
+      "parent": "#point",
+      "text_on": true,
+      "text": "y"
+    },{
+      "note": "pointer",
+      "id": "pointer_[idx]",
+      "class": "position-absolute drag-item ",
+      "style": "width:21px;height:21px;top:1px;left:216px;z-index:90;",
+      "conditional": "",
+      "parent": "#point",
+      "text_on": true,
+      "text": "+",
+      "onmousedown": "v3.change_style('#'+this.id+'_active_mark', 'visibility', 'visible');v3.dragstarted(this);",
+      "ondragover": "v3.dragover(this);",
+      "draggable": "true",
+      "ondrag": "v3.dragged(this);",
+      "ondragstart": "v3.dragged(this);",
+      "ondragend": "v3.change_style('#'+this.id+'_active_mark', 'visibility', 'hidden');v3.dragended(this);",
+      "event": [{ 
+        "on": "xdrag",
+        "option": "v3.recoding_coordinate(this)"
+        }]
+    },{
+      "note": "point",
+      "id": "pointer_[idx]_active_mark",
+      "class": "position-absolute line-height13px text text-center ",
+      "style": "width:21px;height:21px;top:1px;left:216px;z-index:80;color:#ffffee;font-size:21pt;font-weight:900;visibility:hidden;",
+      "conditional": "",
+      "parent": "#point",
+      "text_on": true,
+      "text": "+"
+    },{
+      "note": "save",
+      "id": "save",
+      "class": "position-absolute text text-center ",
+      "style": "width:238px;height:25px;top:595px;left:5px;background-color:#4477ff;vertical-align:middle;",
+      "conditional": "",
+      "parent": "#gadjet_template_003",
+      "text_on": true,
+      "text": "CSV自動保存"
+    }
+  ],
+"gadjet_template": [
+  {
+    "note": "ガジェット１_タイトル",
+    "id": "gadjet_template_001",
+    "class": "position-relative border border-dark p-1 ",
+    "style": "width:1265px;height:40px;background-color:#111111;left:5px;",
+    "conditional": "",
+    "text": "gadjet_template_tab",
+    "parent": "#gadjet_001",
+    "phantom": false
+  },{
+      "note": "ガジェット２_画像表示",
+      "id": "gadjet_template_002",
+      "class": "position-absolute border border-dark p-3 mb-3 ",
+      "style": "height:650px;width:1010px;top:5px;left:260px;",
+      "conditional": "",
+      "text": "gadjet_template_recode",
+      "parent": "#gadjet_002",
+      "phantom":true
+    },{
+      "note": "ガジェット３_座標",
+      "id": "gadjet_template_003",
+      "class": "position-absolute border border-dark p-3 mb-3 ",
+      "style": "height:625px;width:250px;top:30px;left:5px;background-color:#111111;",
+      "conditional": "",
+      "text": "gadjet_template_recode",
+      "parent": "#gadjet_002",
+      "phantom":true
+    }
+  ],
+  "gadjet": [
+    {
+      "note": "ガジェット１＿ヘッダ",
+      "id": "gadjet_001",
+      "class": "position-static ",
+      "style": "height:40px;width:1350px;",
+      "parent": "#frame_001",
+      "text": "gadjet"
+    },{
+      "nate": "ガジェット２_座標さん１",
+      "id": "gadjet_002",
+      "class": "position-relative ",
+      "style": "height:655px;width:1300px;",
+      "parent": "#frame_002",
+      "text": "gadjet"
+    }
+  ],
+  "frame": [
+    {
+      "note": "ヘッダ",
+      "id": "frame_001",
+      "class": "position-static ",
+      "parent": "body",
+      "text": "header"
+    },{
+      "note": "コンテンツ",
+      "id": "frame_002",
+      "class": "position-static",
+      "parent": "body",
+      "text": "content"
+    }
+  ]
+}

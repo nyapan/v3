@@ -1,0 +1,20 @@
+.line-height13px{
+  line-height:13px;
+}
+.line-height19px{
+  line-height:19px;
+}
+.drag-item{
+  line-height:9px;
+  margin-top:0px;
+  padding-left:0px;
+  background:rgba(200,200,200,0.7);
+  border:3px solid #222244;
+  border-style:dashed;
+  border-left-style:solid;
+  border-right-style:solid;
+  color:#222244;
+  font-size:21px;
+  font-weight:900;
+  cursor: move;
+}

@@ -1,0 +1,7 @@
+{
+  "definition_list":[
+    { "definition_list_1_path": "../../definition/pageindex.json" },
+    { "definition_list_2_path": "../../definition/page001.json" },
+    { "definition_list_3_path": "../../definition/mrposition.json" }
+  ]
+}

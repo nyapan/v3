@@ -1,0 +1,82 @@
+{
+  "data": "jsonfile",
+  "data_path": "../../data/definitionList.json",
+  "default_text_on": false,
+  "part": [
+    {
+        "note": "タイトル",
+        "tag": "div",
+        "id": "title",
+        "class": "position-absolute border border-dark text text-center ",
+        "style": "width:300px;height:30px;",
+        "conditional": "",
+        "parent": "#gadjet_template_001",
+        "text_on": true,
+        "text": "v3 JSON定義選択"
+    },{
+        "note": "link",
+        "tag": "a",
+        "id": "definition_list_[idx]_path",
+        "class": "position-absolute border border-dark text text-left ",
+        "style": "width:250px;height:30px;top:10px;left:10px;",
+        "conditional": "",
+        "parent": "#definition_list",
+        "text_on": true,
+        "text": "part",
+        "onclick": "v3.link_page(this)"
+        }
+  ],
+"gadjet_template": [
+  {
+    "note": "ガジェット１_タイトル＿レコード",
+    "id": "gadjet_template_001",
+    "class": "position-relative row border border-dark p-1 ",
+    "style": "height:60px;",
+    "conditional": "",
+    "text": "gadjet_template_tab",
+    "parent": "#gadjet_001",
+    "phantom": false
+  },{
+      "note": "ガジェット２_レコード",
+      "id": "definition_list",
+      "class": "position-relative row border border-dark p-2 mb-3 ",
+      "style": "height:60px;visibility:visible;",
+      "conditional": "",
+      "text": "gadjet_template_recode",
+      "parent": "#gadjet_002",
+      "phantom":true
+    }
+  ],
+  "gadjet": [
+    {
+      "note": "ガジェット１＿タイトル＿コンテナ",
+      "id": "gadjet_001",
+      "class": "position-static container border border-dark ",
+      "style": "height:60px;",
+      "parent": "#frame_001",
+      "text": "gadjet"
+    },{
+      "nate": "ガジェット２_表",
+      "id": "gadjet_002",
+      "class": "position-static container border border-dark ",
+      "style": "height:60px;",
+      "parent": "#frame_002",
+      "text": "gadjet"
+    }
+  ],
+  "frame": [
+    {
+      "note": "ヘッダ",
+      "id": "frame_001",
+      "class": "position-static container-fluid border border-dark ",
+      "parent": "body",
+      "text": "header"
+    },{
+      "note": "コンテンツ",
+      "id": "frame_002",
+      "class": "position-static container-fluid border border-dark ",
+      "parent": "body",
+      "text": "content"
+    }
+  ]
+}

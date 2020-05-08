@@ -1,0 +1,114 @@
+{
+  "data": "none",
+  "data_path": "none",
+  "default_text_on": false,
+  "part": [
+    {
+        "note": "title",
+        "id": "part_001",
+        "class": "position-absolute text text-center ",
+        "style": "width:100px;height:30px;",
+        "conditional": "",
+        "parent": "#gadjet_template_001",
+        "text_on": true,
+        "text": "座標さん"
+    },{
+        "note": "画像取り込み",
+        "tag": "input",
+        "type":"file",
+        "id": "get_csv",
+        "class": "position-absolute border border-dark text text-center ",
+        "style": "width:750px;height:32px;top:10px;left:60px;",
+        "conditional": "",
+        "parent": "#gadjet_template_002",
+        "onchange": "v3.file_reader(this.files[0], \"#part_004\");",
+        "text": "csv取得",
+        "event": [{
+          "on": "change",
+          "function": ""
+          }
+        ]
+    },{
+        "note": "ラベル２",
+        "id": "part_002",
+        "class": "position-absolute p-1 ",
+        "style": "width:60px;height:32px;top:10px;left:10px;",
+        "conditional": "",
+        "parent": "#gadjet_template_002",
+        "text_on": true,
+        "text": "画像"
+    },{
+        "note": "画像表示",
+        "tag": "img",
+        "src": "../../img/default.png",
+        "id": "part_004",
+        "class": "position-absolute ",
+        "style": "width:1000px;height:562px;top:50px;left:10px;",
+        "conditional": "",
+        "parent": "#gadjet_template_002",
+        "text": "part"
+    }
+  ],
+"gadjet_template": [
+  {
+    "note": "ガジェット１_タブ",
+    "id": "gadjet_template_001",
+    "class": "position-relative row border border-dark p-1 ",
+    "style": "height:40px;",
+    "conditional": "",
+    "text": "gadjet_template_tab",
+    "parent": "#gadjet_001",
+    "phantom": false
+  },{
+      "note": "ガジェット２_画像表示",
+      "id": "gadjet_template_002",
+      "class": "position-absolute row border border-dark p-3 mb-3 ",
+      "style": "height:623px;width:1020px;top:5px;left:20px;",
+      "conditional": "",
+      "text": "gadjet_template_recode",
+      "parent": "#gadjet_002",
+      "phantom":true
+    },{
+      "note": "ガジェット３_CSV",
+      "id": "gadjet_template_003",
+      "class": "position-absolute row border border-dark p-3 mb-3 ",
+      "style": "height:560px;width:300px;top:5px;left:845px;",
+      "conditional": "",
+      "text": "gadjet_template_recode",
+      "parent": "#gadjet_002",
+      "phantom":true
+    }
+  ],
+  "gadjet": [
+    {
+      "note": "ガジェット１＿ヘッダ",
+      "id": "gadjet_001",
+      "class": "position-static container border border-dark ",
+      "style": "height:40px;width:1300px;",
+      "parent": "#frame_001",
+      "text": "gadjet"
+    },{
+      "nate": "ガジェット２_座標さん１",
+      "id": "gadjet_002",
+      "class": "position-relative container border border-dark ",
+      "style": "height:655px;width:1300px;",
+      "parent": "#frame_002",
+      "text": "gadjet"
+    }
+  ],
+  "frame": [
+    {
+      "note": "ヘッダ",
+      "id": "frame_001",
+      "class": "position-static container-fluid border border-dark ",
+      "parent": "body",
+      "text": "header"
+    },{
+      "note": "コンテンツ",
+      "id": "frame_002",
+      "class": "position-static container-fluid border border-dark ",
+      "parent": "body",
+      "text": "content"
+    }
+  ]
+}

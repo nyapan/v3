@@ -1,0 +1,11 @@
+.line-height15px{
+  line-height:15px;
+}
+
+.drag-item{
+  font-size:13px;
+  margin-top:0px;
+  padding-left:0px;
+  border:1px solid #ff0000;
+  cursor: move;
+}
