@@ -120,8 +120,18 @@ export class V3Core extends V3Property {
         this.data = json;
         // ページ定義ロード
         this.load_definition(this.definition);
-        //　データ適用
-        this.reflection_page(this.data);
+
+        this.switch_function(json.definition_list, 4);
+
+      case 4:
+        // データ反映
+        if(typeof this.definition.dom_copy_from_id != "undefined" && typeof this.definition.dom_copy_to_id != "undefined" &&
+          this.definition.dom_copy_from_id != "" && this.definition.dom_copy_to_id != ""){
+          this.reflection_page(json, this.definition.dom_copy_from_id, this.definition.dom_copy_to_id);
+        }else{
+          //　データ適用
+          this.reflection_page(json, this.definition.gadjet_template[1].id, this.definition.gadjet[1].id);
+        }
           break;
       default:
     }
@@ -182,17 +192,19 @@ export class V3Core extends V3Property {
   /**
    * データを読み込みページを構成する
    */
-  reflection_page(json){
+  reflection_page(json, from_id, to_id){
     var instance = this;
     var gadjet_index = 0;
-    var from = d3.select("#"+this.definition.gadjet_template[1].id);
-    var to = d3.select("#"+this.definition.gadjet[1].id);
-    json.definition_list.forEach(function(json){
+    var from = d3.select("#"+from_id);
+    var to = d3.select("#"+to_id);
+    json.forEach(function(_json){
       gadjet_index++;
       var copy_dom = instance.copySelection( from, to, gadjet_index);
-      Object.keys(json).forEach(function(key){
-        copy_dom.select("#"+key)
-          .text(json[key]);
+      if(copy_dom.style("top").replace("px","") < 0 ){
+        copy_dom.style("top", gadjet_index * copy_dom.style("height").replace("px", "") + 2);
+      }
+      Object.keys(_json).forEach(function(key){
+        copy_dom.select("#"+key).text(_json[key]);
       })
     });
   }
@@ -212,11 +224,25 @@ export class V3Core extends V3Property {
   change_part_text(target_part, text){
     d3.select(target_part).text(text);
   }
-
-  file_reader(file, target){
-    var reader = new FileReader();
-    var image = new Image();
+  
+  read_csv_file(file){
+    var instance = this;
+    let reader = new FileReader();
     reader.onload = function () {
+      instance.switch_function(instance.csv2json(reader.result), 4);
+    }
+    reader.readAsText(file);
+  }
+
+  /**
+   * imgファイル読み込み
+   * @param {*} file 
+   * @param {*} target 
+   */
+  read_img_file(file, target){
+    let reader = new FileReader();
+      let image = new Image();
+      reader.onload = function () {
         d3.select(target).attr('src', reader.result);
         image.src = reader.result;
         image.onload = function(){
@@ -372,16 +398,16 @@ export class V3Core extends V3Property {
    * csvからjson配列を生成
    * @param {*} csv_list 
    */
-  csv2json(csv_list){
+  csv2json(csv){
     var json_list = [];
-       
+    var csv_list = csv.split("\n"); 
     var items = csv_list[0].split(',');
    
     for (var i = 1; i < csv_list.length - 1; i++) {
       var json = new Object();
       var csv = csv_list[i].split(',');
       for (var j = 0; j < items.length; j++) {
-        json[items[j]] = csv[j];
+        json[items[j].replace("[idx]",i)] = csv[j];
       }
       json_list.push(json);
     }

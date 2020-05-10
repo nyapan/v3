@@ -1,0 +1,5 @@
+point_[idx]_category,point_[idx]_sa_id,point_[idx]_sy_id,pointer_[idx]_coordinate_x,pointer_[idx]_coordinate_y,point_[idx]_name
+1,1,1,x,y,ALM1
+1,1,2,x,y,ALM2
+1,1,3,x,y,ALM3
+1,1,4,x,y,ALM4
